@@ -2,14 +2,13 @@
 
 namespace Stack;
 
-use OAuth\Common\Storage\Exception\TokenNotFoundException;
 use Pimple;
-use Stack\OAuth\ContainerConfig;
+use Stack\Ssl\ContainerConfig;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class OAuth implements HttpKernelInterface
+class Ssl implements HttpKernelInterface
 {
     private $app;
     private $container;
