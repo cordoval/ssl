@@ -12,13 +12,11 @@ use Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage;
 class SslTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
-    public function handlesSpecificAuthRequest()
+    public function handlesInsecureRequest()
     {
         $app = $this->getHttpKernelMock(Response::create('ok'));
-        $oauthApp = new OAuth($app, ['auth_controller' => $this->getControllerMock()]);
-        $requestWithSession = Request::create('/auth');
-        $requestWithSession->setSession(new Session());
-        $response = $oauthApp->handle($requestWithSession);
+        $sslApp = new Ssl($app);
+        $response = $sslApp->handle(Request::create('/auth'));
         $this->assertContains('ok', $response->getContent());
     }
 

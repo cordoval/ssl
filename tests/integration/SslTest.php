@@ -22,8 +22,8 @@ class SslTest extends TestCase
 
         $client = new Client($app);
 
-        $client->request('GET', '/auth');
+        $client->request('GET', '/test');
 
-        $this->assertEquals('test', $client->getResponse()->getContent());
+        $this->assertEquals('test', $client->getResponse());
     }
 }

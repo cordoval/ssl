@@ -21,24 +21,9 @@ class Ssl implements HttpKernelInterface
 
     public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true)
     {
-        $this->container['session'] = $request->getSession();
-
-        if (!$this->container['session'] instanceof SessionInterface) {
-            throw new \Exception('You must configure a middleware for sessions.');
+        if (!$request->isSecure()) {
+            $request->server->set('HTTPS', 1);
         }
-
-        $controller = $this->container['router']->match($request);
-        if ($controller) {
-            return $controller($request);
-        }
-
-        try {
-            $token = $this->container['storage']->retrieveAccessToken();
-        } catch (TokenNotFoundException $e) {
-            $token = null;
-        }
-
-        $request->attributes->set('oauth.token', $token);
 
         return $this->app->handle($request, $type, $catch);
     }
