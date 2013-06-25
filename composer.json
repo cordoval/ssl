@@ -1,7 +1,7 @@
 {
-    "name": "stack/oauth",
-    "description": "OAuth stack middleware.",
-    "keywords": ["stack", "oauth"],
+    "name": "stack/ssl",
+    "description": "Ssl stack middleware.",
+    "keywords": ["stack", "ssl"],
     "license": "MIT",
     "authors": [
         {
@@ -11,7 +11,6 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "lusitanian/oauth": "0.1.*",
         "pimple/pimple": "~1.0@dev",
         "symfony/http-foundation": "~2.1",
         "symfony/http-kernel": "~2.1"
@@ -19,13 +18,9 @@
     "require-dev": {
         "silex/silex": "~1.0@dev",
         "stack/builder": "~1.0@dev",
-        "stack/session": "~1.0@dev",
         "stack/callable-http-kernel": "~1.0@dev",
         "phpunit/phpunit": "3.7.*",
         "symfony/browser-kit": "~2.1"
-    },
-    "suggest": {
-        "stack/session": "~1.0@dev"
     },
     "autoload": {
         "psr-0": { "Stack": "src" }
