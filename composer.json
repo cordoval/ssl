@@ -1,14 +1,8 @@
 {
-    "name": "stack/ssl",
+    "name": "cordoval/ssl",
     "description": "Ssl stack middleware.",
     "keywords": ["stack", "ssl"],
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Igor Wiedler",
-            "email": "igor@wiedler.ch"
-        }
-    ],
     "require": {
         "php": ">=5.4.0",
         "pimple/pimple": "~1.0@dev",
