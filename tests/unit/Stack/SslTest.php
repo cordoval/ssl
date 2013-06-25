@@ -16,7 +16,18 @@ class SslTest extends \PHPUnit_Framework_TestCase
     {
         $app = $this->getHttpKernelMock(Response::create('ok'));
         $sslApp = new Ssl($app);
-        $response = $sslApp->handle(Request::create('/auth'));
+        $response = $sslApp->handle(Request::create('/test'));
+        $this->assertEquals(302, $response->getStatusCode());
+    }
+
+    /** @test */
+    public function handlesSecureRequest()
+    {
+        $app = $this->getHttpKernelMock(Response::create('ok'));
+        $sslApp = new Ssl($app);
+        $request = Request::create('/test');
+        $request->server->set('HTTPS', 1);
+        $response = $sslApp->handle($request);
         $this->assertContains('ok', $response->getContent());
     }
 

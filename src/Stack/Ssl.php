@@ -4,6 +4,7 @@ namespace Stack;
 
 use Pimple;
 use Stack\Ssl\ContainerConfig;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,6 +24,7 @@ class Ssl implements HttpKernelInterface
     {
         if (!$request->isSecure()) {
             $request->server->set('HTTPS', 1);
+            return new RedirectResponse($request->getRequestUri());
         }
 
         return $this->app->handle($request, $type, $catch);
