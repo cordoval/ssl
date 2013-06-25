@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage;
 use Symfony\Component\HttpKernel\Client;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
-class OAuthTest extends TestCase
+class SslTest extends TestCase
 {
     public function testDefaultSetsNoCookies()
     {
